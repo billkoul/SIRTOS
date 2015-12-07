@@ -1,5 +1,5 @@
 # ShoRTOS
-ShoRTOS is a Short Real Time Operating System project for educational purposes
+ShoRTOS is a Short Real Time Operating System project for educational purposes.
 Use it to learn about real time systems and os development 
 
 Copyright (c) 2015 Vasileios Kouliaridis
