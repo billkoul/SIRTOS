@@ -1,4 +1,5 @@
 Copyright (c) 2015 Vasileios Kouliaridis
+
 Author: Vasileios Kouliaridis
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
