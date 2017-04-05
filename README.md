@@ -1,4 +1,4 @@
-# SIRTOS A.K.A. ShoRTOS
+# SIRTOS
 
 SIRTOS is a Simple Real Time Operating System project for educational purposes.
 
