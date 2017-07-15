@@ -25,7 +25,7 @@ long    *screenPtr;             /* Pointer to start of video memory */
 void    (*bankSwitch)(void);    /* Direct bank switching function   */
 
 /*------------------------ VBE Interface Functions ------------------------*/
-
+ 
 // Get SuperVGA information
 int getVbeInfo()
 {
