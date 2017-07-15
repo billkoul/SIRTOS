@@ -141,11 +141,11 @@ void keyboard_handler()
 		else
 			if(draw_keys)
 			{
-        			//Print key
-        			if(graphical_mode)
-            				printf(g_cursor_x,g_cursor_y,(kb_map_en_us[0][scancode]), COLOR_BLACK); 
+    			//Print key
+    			if(graphical_mode)
+        				printf(g_cursor_x,g_cursor_y,(kb_map_en_us[0][scancode]), COLOR_BLACK); 
 				else
-             				monitor_put(kbdus[scancode]);
+         				monitor_put(kbdus[scancode]);
 			}
 	}
 }
@@ -159,41 +159,41 @@ void init_keyboard(void)
 //Gets a key
 unsigned char getch()
 {
-     	unsigned char getch_char;
+ 	unsigned char getch_char;
      
-     	if(kbdus[inb(0x60)] != 0) //Not empty
-     		outb(0x60,0xf4); //Clear buffer
+ 	if(kbdus[inb(0x60)] != 0) //Not empty
+ 		outb(0x60,0xf4); //Clear buffer
      
-     	while(kbdus[inb(0x60)] == 0); //While buffer is empty
-     		getch_char = kbdus[inb(0x60)];
-     	outb(0x60,0xf4); //Leave it emptying
-     	return getch_char;
+ 	while(kbdus[inb(0x60)] == 0); //While buffer is empty
+ 		getch_char = kbdus[inb(0x60)];
+ 	outb(0x60,0xf4); //Leave it emptying
+ 	return getch_char;
 }
 
 unsigned char getascii()
 {
-     	unsigned char get_ascii;
+ 	unsigned char get_ascii;
      
-     	if(kbdus[inb(0x60)] != 0) //Not empty
-     		outb(0x60,0xf4); //Clear buffer
+ 	if(kbdus[inb(0x60)] != 0) //Not empty
+ 		outb(0x60,0xf4); //Clear buffer
      
-     	while(kbdus[inb(0x60)] == 0); //While buffer is empty
-     		get_ascii = inb(0x60);
-     	outb(0x60,0xf4); //Leave it emptying
-     	return get_ascii;
+ 	while(kbdus[inb(0x60)] == 0); //While buffer is empty
+ 		get_ascii = inb(0x60);
+ 	outb(0x60,0xf4); //Leave it emptying
+ 	return get_ascii;
 }
 
 char* gets()
 { 
-     	gets_flag = 0;
-     		while(gets_flag == 0);
-     	return (char*)buffer2;
+ 	gets_flag = 0;
+ 		while(gets_flag == 0);
+ 	return (char*)buffer2;
 }
 
 static void do_gets()
 {
-     	buffer[kb_count++] = 0; //Null terminated
-     	for(;kb_count; kb_count--)
-          	buffer2[kb_count] = buffer[kb_count];
-     	return;
+ 	buffer[kb_count++] = 0; //Null terminated
+ 	for(;kb_count; kb_count--)
+      	buffer2[kb_count] = buffer[kb_count];
+ 	return;
 }

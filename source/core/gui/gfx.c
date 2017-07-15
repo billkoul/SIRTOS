@@ -31,15 +31,15 @@ volatile char *c_buffer;
 
 static void vsync()
 {
-      /* wait until any previous retrace has ended */
-      while (inb(0x3DA) & 8);
-      /* wait until a new retrace has just begun */
-      while (!(inb(0x3DA) & 8));
+	/* wait until any previous retrace has ended */
+	while (inb(0x3DA) & 8);
+	/* wait until a new retrace has just begun */
+	while (!(inb(0x3DA) & 8));
 }
 
 static void g_flip() 
 {
-    	memcpy((long*)VIDEO_MEMORY, (long*)double_buffer,  0x300000);
+	memcpy((long*)VIDEO_MEMORY, (long*)double_buffer,  0x300000);
 }
 
 void gfx_draw_workspace()

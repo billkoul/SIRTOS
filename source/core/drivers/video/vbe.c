@@ -29,60 +29,60 @@ void    (*bankSwitch)(void);    /* Direct bank switching function   */
 // Get SuperVGA information
 int getVbeInfo()
 {
-    	regs16_t regs;
-    	char *VbeInfo = (char *)&VbeInfoBlock;
-    	regs.ax = 0x4F00;
-    	regs.di = FP_OFF(VbeInfo);
-    	regs.es = FP_SEG(VbeInfo);
-    	int32(0x10, &regs);
-    	if(regs.ax == 0x4F)
+	regs16_t regs;
+	char *VbeInfo = (char *)&VbeInfoBlock;
+	regs.ax = 0x4F00;
+	regs.di = FP_OFF(VbeInfo);
+	regs.es = FP_SEG(VbeInfo);
+	int32(0x10, &regs);
+	if(regs.ax == 0x4F)
 		return 0;
-    	else
+	else
 		return 1;
 }
 
 // Get video mode information given a VBE mode number
 int getModeInfo()
 {
-    	regs16_t regs;
-    	char *modeInfo = (char *)&ModeInfoBlock;
-    	regs.ax = 0x4F01;
-    	regs.cx = 0x4118;
-    	regs.di = FP_SEG(modeInfo);
-    	regs.es = FP_OFF(modeInfo);
-    	int32(0x10, &regs);
-    	if (regs.ax != 0x4F) 
+	regs16_t regs;
+	char *modeInfo = (char *)&ModeInfoBlock;
+	regs.ax = 0x4F01;
+	regs.cx = 0x4118;
+	regs.di = FP_SEG(modeInfo);
+	regs.es = FP_OFF(modeInfo);
+	int32(0x10, &regs);
+	if (regs.ax != 0x4F) 
 		return 0;
-    	if ((ModeInfoBlock.ModeAttributes & 0x1)
+	if ((ModeInfoBlock.ModeAttributes & 0x1)
             && ModeInfoBlock.MemoryModel == memPK
             && ModeInfoBlock.BitsPerPixel == 8
             && ModeInfoBlock.NumberOfPlanes == 1)
-        	return 1;
-    	return 0;
+	return 1;
+	return 0;
 }
 
 // Set a VBE video mode
 void setVBEMode()
 {
-    	regs16_t regs;
-    	regs.ax = 0x4F02; 
-    	regs.bx = 0x4118;
-    	int32(0x10,&regs);
+	regs16_t regs;
+	regs.ax = 0x4F02; 
+	regs.bx = 0x4118;
+	int32(0x10,&regs);
 }
 
 // Return the current VBE video mode
 int getVBEMode(void)
 {
-    	regs16_t regs;
-    	regs.ax = 0x4F03;
-    	int32(0x10,&regs);
-    	return regs.bx;
+	regs16_t regs;
+	regs.ax = 0x4F03;
+	int32(0x10,&regs);
+	return regs.bx;
 }
 
 // Switch to text mode 80*25
 void switch_to_textmode()
 {
-    	regs16_t regs;
+	regs16_t regs;
 	regs.ax = 0x0003;
 	int32(0x10, &regs);
 }
@@ -94,9 +94,9 @@ int init_vbe_graphics()
 		return 1;
 	getModeInfo();
 
-      	screenPtr = (long *)0xE0000000;
+  	screenPtr = (long *)0xE0000000;
 
-      	setVBEMode();
+  	setVBEMode();
 
 	memset((long *)0xE0000000, 0x00000000, 0x300000);
 

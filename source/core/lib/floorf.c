@@ -4,8 +4,8 @@
 
 float floorf(float d)
 {
-  // Rounds d down to the nearest integer.
+	// Rounds d down to the nearest integer.
 
-  int i = (int) d;
-  return ((float) i);
+	int i = (int) d;
+	return ((float) i);
 }

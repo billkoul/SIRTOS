@@ -4,6 +4,6 @@
 
 int isupper(int c)
 {
-  // checks for an uppercase letter.
-  return ((c >= 'A') && (c <= 'Z'));
+	// checks for an uppercase letter.
+	return ((c >= 'A') && (c <= 'Z'));
 }

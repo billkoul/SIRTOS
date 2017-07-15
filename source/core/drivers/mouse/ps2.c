@@ -153,43 +153,43 @@ void handle_click()
 void mouse_handler()
 {
 	if(!graphical_mode)
-       		return;
+   		return;
   	switch(mouse_cycle)
   	{
-    		case 0:
-      		mouse_byte[0]=inb(0x60);
-      		mouse_cycle++;
+		case 0:
+  		mouse_byte[0]=inb(0x60);
+  		mouse_cycle++;
    
-      		mouse_lbtn = mouse_byte[0] & 0x1; //bit 0
-      		mouse_rbtn = mouse_byte[0] & 0x2; //bit 1
+  		mouse_lbtn = mouse_byte[0] & 0x1; //bit 0
+  		mouse_rbtn = mouse_byte[0] & 0x2; //bit 1
 		//mouse_mbtn = mouse_byte[0] & 0x4; //bit 1
-      		break;
+  		break;
 
-    		case 1:
-      		mouse_byte[1]=inb(0x60);
-      		mouse_cycle++;
+		case 1:
+  		mouse_byte[1]=inb(0x60);
+  		mouse_cycle++;
       
-      		mouse_x=mouse_byte[1];
-      		mx += mouse_x;
-      		if (mx >= SCREEN_SIZE_X-8) 
+  		mouse_x=mouse_byte[1];
+  		mx += mouse_x;
+  		if (mx >= SCREEN_SIZE_X-8) 
 			mx = SCREEN_SIZE_X-8;
-      		if (mx <= 1) 
+  		if (mx <= 1) 
 			mx = 1;
       
-      		break;
+  		break;
 
-    		case 2:
-      		mouse_byte[2]=inb(0x60);
-      		mouse_cycle=0;
+		case 2:
+  		mouse_byte[2]=inb(0x60);
+  		mouse_cycle=0;
       
-      		mouse_y=mouse_byte[2];
-      		my -= mouse_y;
-      		if (my >= SCREEN_SIZE_Y-8) 
+  		mouse_y=mouse_byte[2];
+  		my -= mouse_y;
+  		if (my >= SCREEN_SIZE_Y-8) 
 			my = SCREEN_SIZE_Y-8;
-      		if (my <= 1) 
+  		if (my <= 1) 
 			my = 1;
       
-      		break;
+  		break;
   	}
 
 	handle_click();
@@ -202,21 +202,21 @@ static void mouse_wait(unsigned char a_type)
   	unsigned int _time_out=100000;
   	if(a_type==0)
   	{
-    		while(_time_out--) //Data
-    		{
-      			if((inb(0x64) & 1)==1)
-        			return;
-    		}
-    		return;
+		while(_time_out--) //Data
+		{
+  			if((inb(0x64) & 1)==1)
+    			return;
+		}
+		return;
   	}
   	else
   	{
-    		while(_time_out--) //Signal
-    		{
-      		if((inb(0x64) & 2)==0)
-        		return;
-    		}
+		while(_time_out--) //Signal
+		{
+  		if((inb(0x64) & 2)==0)
     		return;
+		}
+		return;
   	}
 }
 
@@ -274,9 +274,9 @@ void init_ps2_mouse()
 
 int detect_ps2_mouse()
 {
-    	unsigned char tmp = mouse_read();
-    	if(tmp != 0xFA)
-         	return 0; //No mouse
-    	else
-         	return 1; //Mouse there
+	unsigned char tmp = mouse_read();
+	if(tmp != 0xFA)
+     	return 0; //No mouse
+	else
+     	return 1; //Mouse there
 }

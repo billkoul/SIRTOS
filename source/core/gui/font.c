@@ -27,11 +27,11 @@ void draw_char(int x, int y, unsigned char character, int c)
 	{
 		for (i = 8; i > 0; i--)
 		{
-            		j++;
+            j++;
 			if ((font[l] & (1<<i)))
 			{
 				putPixel_32bpp(j, h, c);
-            		}
+            }
 		}
 		h++;
 		j = x;
