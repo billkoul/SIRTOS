@@ -7,4 +7,4 @@ This project was made for educational purposes.
 
 
 
-![alt text](https://github.com/billkoul/SIRTOS/screenshot.jpg)
+![alt text](https://github.com/billkoul/SIRTOS/blob/master/screenshot.jpg)
